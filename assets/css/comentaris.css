@@ -1,0 +1,55 @@
+#wrap-comentaris{
+	background-color: lightblue;
+	border-radius: 5px;
+	border: 1px solid blue;
+	border-color: blue;
+	padding:0;
+	margin:0;
+	
+}
+#wrap-comentaris h3{
+	font-weight: bolder;
+	text-align:center;
+}
+
+#caixa-comentaris{
+	max-height:300px;
+	overflow-y: auto;
+}
+
+.comentari{
+	border-bottom:1px solid rgba(0,0,0,.5);
+	overflow:hidden;
+	padding: 12px;
+	background-color: white;
+	width:100%;
+}
+#comentari-missatge{
+	font-size: 14px;
+	display:block;
+}
+#comentari-author,#comentari-data{
+	font-size: 10px;
+	font-style: italic;
+}
+#comentari-author{
+	float: left;
+}
+#comentari-data{
+	float: right;
+}
+
+#enviar{
+	margin-top: 5px;
+}
+
+#btn-comentari{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	float: right;
+}
+
+#btn-comentari i{
+	text-align:center;
+	padding:3px 10px 3px 10px;
+}
