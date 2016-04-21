@@ -160,7 +160,7 @@ function print_link($params, $args = array()){
 	extract($params);
 	extract($args);
 	$id = $record['id'];
-	return '<a href="#" class="glyphicon glyphicon-print"></a>';	
+	return '<a href="../../controllers/' . $name_file . '/ctrlPdf'. ucfirst($name_file). '.php?id=' . $id . '" class="glyphicon glyphicon-print"></a>';	
 }
 
 

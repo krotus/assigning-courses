@@ -57,6 +57,11 @@ class Enrollment extends DataObject{
 		$this->setCourse($course);
 	}
 
+	public function getAllByIdEmployee($idEmployee){
+		$dao = new EnrollmentDAO();
+		return $dao->getAllByIdEmployee($idEmployee);
+	}
+
 }
 
 

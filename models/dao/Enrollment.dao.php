@@ -76,8 +76,77 @@ class EnrollmentDAO implements DAO{
 	}
 
 	public function getAll(){
-		
+		$query = "SELECT * FROM course_employee";
+		$enrollments = array();
+		try {
+			$stmt = $this->db->prepare($query);
+			$stmt->execute();
+			$rows = $stmt->fetchAll();
+			if($rows){
+				foreach ($rows as $row) {
+					$enrollment = new Enrollment();
+					$enrollment->setId($row["id"]);	
+					$idCourse = $row["id_course"];
+					$course = new Course();
+					$course = $course->getSelf($idCourse);
+					$enrollment->setCourse($course);
+
+					$idEmployee = $row["id_employee"];
+					$employee = new Employee();
+					$employee = $employee->getSelf($idEmployee);
+					$enrollment->setEmployee($employee);
+
+					$enrollment->setImprovement($row["improvement"]);
+					$enrollment->setDate($row["join_date"]);
+
+					array_push($enrollments, $enrollment);
+				}
+			}else{
+				throw new DAOException("There is no enrollments on the database.", 0);
+			}
+			
+		} catch (DAOException $e) {
+			echo $e->getErrorMessage();
+		}
+		return $enrollments;
 	}
+
+	public function getAllByIdEmployee($id){
+		$query = "SELECT * FROM course_employee WHERE id_employee=" . $id;
+		$enrollments = array();
+		try {
+			$stmt = $this->db->prepare($query);
+			$stmt->execute();
+			$rows = $stmt->fetchAll();
+			if($rows){
+				foreach ($rows as $row) {
+					$enrollment = new Enrollment();
+					$enrollment->setId($row["id"]);	
+					$idCourse = $row["id_course"];
+					$course = new Course();
+					$course = $course->getSelf($idCourse);
+					$enrollment->setCourse($course);
+
+					$idEmployee = $row["id_employee"];
+					$employee = new Employee();
+					$employee = $employee->getSelf($idEmployee);
+					$enrollment->setEmployee($employee);
+
+					$enrollment->setImprovement($row["improvement"]);
+					$enrollment->setDate($row["join_date"]);
+
+					array_push($enrollments, $enrollment);
+				}
+			}else{
+				throw new DAOException("There is no enrollments on the database.", 0);
+			}
+			
+		} catch (DAOException $e) {
+			echo $e->getErrorMessage();
+		}
+		return $enrollments;
+	}
+
 }
 
 
